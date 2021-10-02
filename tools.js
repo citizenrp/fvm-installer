@@ -98,7 +98,7 @@ module.exports = {
     if(versionarray.length > 0) resource_version = versionarray[1] || "";
     
     return new Promise(async (resolve, reject) => {
-      await request.get('https://api.github.com/repos/' + resource_user + "/" + resource_name + "/tags").set('Accept', 'application/json')
+      await request.get('https://api.github.com/repos/' + resource_user + "/" + resource_name + "/tags").set('Accept', 'application/json').set('User-Agent', 'fvm-installer')
       .then(async res => {
           var data;
 
@@ -192,7 +192,7 @@ module.exports = {
     const resource_name = arraytosplit[1].split("@")[0] || arraytosplit[1];
 
     return new Promise(async (resolve, reject) => {
-      await request.get('https://api.github.com/repos/' + resource_user + "/" + resource_name + "/tags").set('Accept', 'application/json')
+      await request.get('https://api.github.com/repos/' + resource_user + "/" + resource_name + "/tags").set('Accept', 'application/json').set('User-Agent', 'fvm-installer')
       .then(res => {
         const version = res.body[0].name;
         
